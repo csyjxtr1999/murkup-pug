@@ -1,0 +1,46 @@
+//- +retina ({
+//-  imgName: 'img-01',
+//-  alt: 'logo'
+//- })
+mixin retina(obj)
+    picture
+        source(srcset='images/small-'+obj.imgName+'.jpg, images/small-'+obj.imgName+'-2x.jpg 2x, images/small-'+obj.imgName+'-3x.jpg 3x', media='(max-width: 767px)')
+        source(srcset='images/medium-'+obj.imgName+'.jpg, images/medium-'+obj.imgName+'-2x.jpg 2x, images/medium-'+obj.imgName+'-3x.jpg 3x', media='(max-width: 1024px)')
+        source(srcset='images/large-'+obj.imgName+'.jpg, images/large-'+obj.imgName+'-2x.jpg 2x, images/large-'+obj.imgName+'-3x.jpg 3x')
+        img(src='images/large-'+obj.imgName+'.jpg', alt= obj.alt || "image description")
+
+
+//- +accordion({
+//-   opener: 'Is Agent &amp; Heroes a reputable company to work with?',
+//-   contentSlide: 'It .'
+//- })
+mixin accordion(obj)
+    a.opener(href="#")= obj.opener
+    .slide
+        .holder
+            p= obj.contentSlide
+
+//- +list([arr])
+mixin list(arr)
+    ul.list
+        -for (var i = 0; i <= arr.length - 1; i++)
+        li: a(href='#')= arr[i]
+
+//- +card({
+//- 		imageName: '',
+//- 		title: '',
+//- 		text: '',
+//- 		link: ''
+//- 	})
+mixin card(obj)
+    .card
+        if (obj.imageName)
+            .card-img: a(href="#"): img(src="images/" + obj.imageName, alt="image description")
+        .card-body
+            if (obj.title)
+                h3.card-title: a(href="#")= obj.title
+            if (obj.text)
+                p= obj.text
+            if (obj.link)
+            .btn-wrap
+                a.btn.btn-default(href="#")= obj.link

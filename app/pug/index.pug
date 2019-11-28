@@ -1,0 +1,14 @@
+include mixins/_mixin
+include layouts/_head
+    block content
+        include layouts/_header
+        main#main(role="main")
+            // section banner template
+            section.section-banner(style="background-image: url(images/img-001.png)")
+                .container
+                    .banner-text
+                        .heading-section
+                            h1
+                                span.title
+                                span.sub-title
+        include layouts/_footer
